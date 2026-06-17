@@ -1,0 +1,90 @@
+import { Link, useLocation } from "react-router-dom";
+import {
+  Home,
+  PlusSquare,
+  ShoppingBag,
+  Bell,
+  ClipboardList,
+} from "lucide-react";
+
+const Sidebar = () => {
+  const location = useLocation();
+
+  const menu = [
+    {
+      name: "Dashboard",
+      path: "/admin",
+      icon: <Home size={18} />,
+    },
+    {
+      name: "Add Product",
+      path: "/admin/add-product",
+      icon: <PlusSquare size={18} />,
+    },
+    {
+      name: "Product List",
+      path: "/admin/products",
+      icon: <ShoppingBag size={18} />,
+    },
+    {
+      name: "Orders",
+      path: "/admin/orders",
+      icon: <ClipboardList size={18} />,
+    },
+    {
+      name: "Notifications",
+      path: "/admin/notifications",
+      icon: <Bell size={18} />,
+    },
+  ];
+
+  return (
+    <div className="h-full bg-white shadow-lg flex flex-col">
+      {/* Logo */}
+      <div className="px-6 py-5 border-b">
+        <h2 className="text-xl font-bold text-blue-600 tracking-wide">
+          Admin Panel
+        </h2>
+      </div>
+
+      {/* Menu */}
+      <ul className="flex-1 px-3 py-4 space-y-2">
+        {menu.map((item, index) => {
+          const isActive = location.pathname === item.path;
+
+          return (
+            <li key={index}>
+              <Link
+                to={item.path}
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group
+                  ${
+                    isActive
+                      ? "bg-blue-500 text-white shadow-md"
+                      : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
+                  }
+                `}
+              >
+                <span
+                  className={`${
+                    isActive ? "text-white" : "text-gray-400 group-hover:text-blue-600"
+                  }`}
+                >
+                  {item.icon}
+                </span>
+
+                <span className="font-medium">{item.name}</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+
+      {/* Footer */}
+      <div className="p-4 border-t text-sm text-gray-400">
+        © 2026 Admin
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;
