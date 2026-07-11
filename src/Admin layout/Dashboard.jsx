@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   const stats = [
     {
-      title: "Total Products",
+      title: "Total Books",
       value: String(products.length),
       icon: <Package size={20} />,
       color: "bg-blue-100 text-blue-600",
@@ -44,9 +44,9 @@ const Dashboard = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-800">Dashboard</h1>
+        <h1 className="text-2xl font-bold text-gray-800">Pak Law Book Dashboard</h1>
         <p className="text-sm text-gray-400">
-          Overview of your store performance
+          Live overview of books, orders and publications
         </p>
       </div>
 

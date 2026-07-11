@@ -75,9 +75,14 @@ export const apiSlice = createApi({
       }),
       transformResponse: (response) => {
         if (response?.success && response?.token) {
-          // Store token in localStorage
           if (typeof window !== 'undefined') {
             localStorage.setItem('token', response.token);
+            if (response?.user) {
+              localStorage.setItem('adminUser', JSON.stringify({
+                name: response.user.name || 'Pak Law Book Admin',
+                email: response.user.email || '',
+              }));
+            }
           }
         }
         return response;

@@ -42,9 +42,15 @@ const Sidebar = () => {
     <div className="h-full bg-white shadow-lg flex flex-col">
       {/* Logo */}
       <div className="px-6 py-5 border-b">
-        <h2 className="text-xl font-bold text-blue-600 tracking-wide">
-          Admin Panel
-        </h2>
+        <div className="flex items-center gap-3">
+          <img src="/logo.jpeg" alt="Pak Law Book" className="w-10 h-10 rounded-full object-cover" />
+          <div>
+            <h2 className="text-lg font-bold text-amber-600 tracking-wide">
+              Pak Law Book
+            </h2>
+            <p className="text-xs text-gray-400">Admin Panel</p>
+          </div>
+        </div>
       </div>
 
       {/* Menu */}
@@ -81,7 +87,7 @@ const Sidebar = () => {
 
       {/* Footer */}
       <div className="p-4 border-t text-sm text-gray-400">
-        © 2026 Admin
+        © 2026 Pak Law Book
       </div>
     </div>
   );

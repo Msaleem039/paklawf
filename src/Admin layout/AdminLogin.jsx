@@ -32,6 +32,13 @@ const AdminLogin = () => {
     try {
       const result = await login(formData).unwrap();
       if (result?.success || result?.token) {
+        localStorage.setItem(
+          "adminUser",
+          JSON.stringify({
+            name: result?.user?.name || result?.name || "Pak Law Book Admin",
+            email: result?.user?.email || formData.email,
+          })
+        );
         window.dispatchEvent(new CustomEvent('auth-changed'));
         showSuccess("Welcome back! Login successful.");
         navigate("/admin", { replace: true });
